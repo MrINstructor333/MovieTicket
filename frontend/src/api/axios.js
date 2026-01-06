@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api';
+// Use the computer's IP address so mobile devices can access the backend
+const API_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:8000/api' 
+  : `http://${window.location.hostname}:8000/api`;
 
 const api = axios.create({
   baseURL: API_URL,

@@ -97,25 +97,25 @@ const AdminAnalytics = () => {
   }
 
   return (
-    <div className="min-h-screen p-4 sm:p-6 lg:p-8 bg-dark-900">
+    <div className="min-h-screen p-3 sm:p-6 lg:p-8 bg-dark-900">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8"
+        className="flex flex-col gap-4 mb-6 sm:mb-8"
       >
         <div>
-          <h1 className="text-3xl font-bold text-white">Analytics</h1>
-          <p className="text-gray-400 mt-1">Track your cinema performance</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">Analytics</h1>
+          <p className="text-gray-400 mt-1 text-sm sm:text-base">Track your cinema performance</p>
         </div>
         
         {/* Time Range Selector */}
-        <div className="flex items-center gap-2 p-1 rounded-xl bg-dark-800 border border-white/5">
+        <div className="flex items-center gap-1 sm:gap-2 p-1 rounded-xl bg-dark-800 border border-white/5 overflow-x-auto">
           {['week', 'month', 'quarter', 'year'].map((range) => (
             <button
               key={range}
               onClick={() => setTimeRange(range)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                 timeRange === range
                   ? 'bg-primary text-white'
                   : 'text-gray-400 hover:text-white'
@@ -132,103 +132,103 @@ const AdminAnalytics = () => {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-12 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
       >
         {/* KPI Cards - Row 1 */}
-        <motion.div variants={itemVariants} className="col-span-12 sm:col-span-6 lg:col-span-3">
-          <div className="bento-card p-6">
-            <div className="flex items-start justify-between mb-4">
-              <div className="p-3 rounded-xl bg-emerald-500/10">
-                <DollarSign className="w-6 h-6 text-emerald-400" />
+        <motion.div variants={itemVariants}>
+          <div className="bento-card p-4 sm:p-6">
+            <div className="flex items-start justify-between mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 rounded-xl bg-emerald-500/10">
+                <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400" />
               </div>
-              <span className={`flex items-center text-sm font-medium ${
+              <span className={`flex items-center text-xs sm:text-sm font-medium ${
                 analytics.revenue.isPositive ? 'text-emerald-400' : 'text-red-400'
               }`}>
-                {analytics.revenue.isPositive ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
+                {analytics.revenue.isPositive ? <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" /> : <ArrowDownRight className="w-3 h-3 sm:w-4 sm:h-4" />}
                 {analytics.revenue.change}%
               </span>
             </div>
-            <h3 className="text-gray-400 text-sm font-medium">Total Revenue</h3>
-            <p className="text-3xl font-bold text-white mt-1">${analytics.revenue.total.toLocaleString()}</p>
+            <h3 className="text-gray-400 text-xs sm:text-sm font-medium">Total Revenue</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-white mt-1">${analytics.revenue.total.toLocaleString()}</p>
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="col-span-12 sm:col-span-6 lg:col-span-3">
-          <div className="bento-card p-6">
-            <div className="flex items-start justify-between mb-4">
-              <div className="p-3 rounded-xl bg-blue-500/10">
-                <Ticket className="w-6 h-6 text-blue-400" />
+        <motion.div variants={itemVariants}>
+          <div className="bento-card p-4 sm:p-6">
+            <div className="flex items-start justify-between mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 rounded-xl bg-blue-500/10">
+                <Ticket className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
               </div>
-              <span className={`flex items-center text-sm font-medium ${
+              <span className={`flex items-center text-xs sm:text-sm font-medium ${
                 analytics.bookings.isPositive ? 'text-emerald-400' : 'text-red-400'
               }`}>
-                {analytics.bookings.isPositive ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
+                {analytics.bookings.isPositive ? <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" /> : <ArrowDownRight className="w-3 h-3 sm:w-4 sm:h-4" />}
                 {analytics.bookings.change}%
               </span>
             </div>
-            <h3 className="text-gray-400 text-sm font-medium">Total Bookings</h3>
-            <p className="text-3xl font-bold text-white mt-1">{analytics.bookings.total.toLocaleString()}</p>
+            <h3 className="text-gray-400 text-xs sm:text-sm font-medium">Total Bookings</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-white mt-1">{analytics.bookings.total.toLocaleString()}</p>
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="col-span-12 sm:col-span-6 lg:col-span-3">
-          <div className="bento-card p-6">
-            <div className="flex items-start justify-between mb-4">
-              <div className="p-3 rounded-xl bg-amber-500/10">
-                <Target className="w-6 h-6 text-amber-400" />
+        <motion.div variants={itemVariants}>
+          <div className="bento-card p-4 sm:p-6">
+            <div className="flex items-start justify-between mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 rounded-xl bg-amber-500/10">
+                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" />
               </div>
-              <span className={`flex items-center text-sm font-medium ${
+              <span className={`flex items-center text-xs sm:text-sm font-medium ${
                 analytics.avgTicketPrice.isPositive ? 'text-emerald-400' : 'text-red-400'
               }`}>
-                {analytics.avgTicketPrice.isPositive ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
+                {analytics.avgTicketPrice.isPositive ? <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" /> : <ArrowDownRight className="w-3 h-3 sm:w-4 sm:h-4" />}
                 {Math.abs(analytics.avgTicketPrice.change)}%
               </span>
             </div>
-            <h3 className="text-gray-400 text-sm font-medium">Avg Ticket Price</h3>
-            <p className="text-3xl font-bold text-white mt-1">${analytics.avgTicketPrice.total}</p>
+            <h3 className="text-gray-400 text-xs sm:text-sm font-medium">Avg Ticket Price</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-white mt-1">${analytics.avgTicketPrice.total}</p>
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="col-span-12 sm:col-span-6 lg:col-span-3">
-          <div className="bento-card p-6">
-            <div className="flex items-start justify-between mb-4">
-              <div className="p-3 rounded-xl bg-violet-500/10">
-                <Users className="w-6 h-6 text-violet-400" />
+        <motion.div variants={itemVariants}>
+          <div className="bento-card p-4 sm:p-6">
+            <div className="flex items-start justify-between mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 rounded-xl bg-violet-500/10">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 text-violet-400" />
               </div>
-              <span className={`flex items-center text-sm font-medium ${
+              <span className={`flex items-center text-xs sm:text-sm font-medium ${
                 analytics.occupancyRate.isPositive ? 'text-emerald-400' : 'text-red-400'
               }`}>
-                {analytics.occupancyRate.isPositive ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
+                {analytics.occupancyRate.isPositive ? <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" /> : <ArrowDownRight className="w-3 h-3 sm:w-4 sm:h-4" />}
                 {analytics.occupancyRate.change}%
               </span>
             </div>
-            <h3 className="text-gray-400 text-sm font-medium">Occupancy Rate</h3>
-            <p className="text-3xl font-bold text-white mt-1">{analytics.occupancyRate.total}%</p>
+            <h3 className="text-gray-400 text-xs sm:text-sm font-medium">Occupancy Rate</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-white mt-1">{analytics.occupancyRate.total}%</p>
           </div>
         </motion.div>
 
         {/* Weekly Revenue Chart */}
-        <motion.div variants={itemVariants} className="col-span-12 lg:col-span-8">
-          <div className="bento-card p-6 h-[400px]">
-            <div className="flex items-center justify-between mb-6">
+        <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-3">
+          <div className="bento-card p-4 sm:p-6 h-auto sm:h-[400px]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-4 sm:mb-6">
               <div>
-                <h3 className="text-lg font-semibold text-white">Revenue Overview</h3>
-                <p className="text-sm text-gray-400">Daily revenue breakdown</p>
+                <h3 className="text-base sm:text-lg font-semibold text-white">Revenue Overview</h3>
+                <p className="text-xs sm:text-sm text-gray-400">Daily revenue breakdown</p>
               </div>
-              <div className="flex items-center gap-4 text-sm">
-                <span className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-accent-cyan" />
+              <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm">
+                <span className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gradient-to-r from-primary to-accent-cyan" />
                   <span className="text-gray-400">Revenue</span>
                 </span>
-                <span className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-violet-500" />
+                <span className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-violet-500" />
                   <span className="text-gray-400">Bookings</span>
                 </span>
               </div>
             </div>
 
             {/* Chart */}
-            <div className="h-[280px] flex items-end justify-between gap-4 px-4">
+            <div className="h-[200px] sm:h-[280px] flex items-end justify-between gap-1 sm:gap-4 px-0 sm:px-4">
               {dailyRevenue.map((day, i) => {
                 const maxRevenue = Math.max(...dailyRevenue.map(d => d.revenue));
                 const maxBookings = Math.max(...dailyRevenue.map(d => d.bookings));
@@ -236,15 +236,15 @@ const AdminAnalytics = () => {
                 const bookingsHeight = (day.bookings / maxBookings) * 100;
                 
                 return (
-                  <div key={day.day} className="flex-1 flex flex-col items-center gap-2">
-                    <div className="w-full h-[240px] flex items-end justify-center gap-1.5">
+                  <div key={day.day} className="flex-1 flex flex-col items-center gap-1 sm:gap-2">
+                    <div className="w-full h-[160px] sm:h-[240px] flex items-end justify-center gap-0.5 sm:gap-1.5">
                       <motion.div
                         initial={{ height: 0 }}
                         animate={{ height: `${revenueHeight}%` }}
                         transition={{ delay: i * 0.05, duration: 0.5 }}
-                        className="w-6 bg-gradient-to-t from-primary to-accent-cyan rounded-t-md relative group cursor-pointer"
+                        className="w-3 sm:w-6 bg-gradient-to-t from-primary to-accent-cyan rounded-t-md relative group cursor-pointer"
                       >
-                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-dark-700 rounded text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-dark-700 rounded text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 hidden sm:block">
                           ${day.revenue.toLocaleString()}
                         </div>
                       </motion.div>
@@ -252,14 +252,14 @@ const AdminAnalytics = () => {
                         initial={{ height: 0 }}
                         animate={{ height: `${bookingsHeight * 0.8}%` }}
                         transition={{ delay: i * 0.05 + 0.1, duration: 0.5 }}
-                        className="w-4 bg-violet-500 rounded-t-md relative group cursor-pointer opacity-70"
+                        className="w-2 sm:w-4 bg-violet-500 rounded-t-md relative group cursor-pointer opacity-70"
                       >
-                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-dark-700 rounded text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-dark-700 rounded text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 hidden sm:block">
                           {day.bookings} bookings
                         </div>
                       </motion.div>
                     </div>
-                    <span className="text-xs text-gray-500">{day.day}</span>
+                    <span className="text-[10px] sm:text-xs text-gray-500">{day.day}</span>
                   </div>
                 );
               })}
@@ -268,25 +268,25 @@ const AdminAnalytics = () => {
         </motion.div>
 
         {/* Genre Distribution */}
-        <motion.div variants={itemVariants} className="col-span-12 lg:col-span-4">
-          <div className="bento-card p-6 h-[400px]">
-            <div className="flex items-center justify-between mb-6">
+        <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-1">
+          <div className="bento-card p-4 sm:p-6 h-auto sm:h-[400px]">
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
               <div>
-                <h3 className="text-lg font-semibold text-white">Genre Distribution</h3>
-                <p className="text-sm text-gray-400">Bookings by genre</p>
+                <h3 className="text-base sm:text-lg font-semibold text-white">Genre Distribution</h3>
+                <p className="text-xs sm:text-sm text-gray-400">Bookings by genre</p>
               </div>
-              <PieChart className="w-5 h-5 text-gray-400" />
+              <PieChart className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
             </div>
 
             {/* Simple bar representation */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {genreData.map((genre, i) => (
-                <div key={genre.name} className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
+                <div key={genre.name} className="space-y-1.5 sm:space-y-2">
+                  <div className="flex items-center justify-between text-xs sm:text-sm">
                     <span className="text-white font-medium">{genre.name}</span>
                     <span className="text-gray-400">{genre.value}%</span>
                   </div>
-                  <div className="h-2 bg-dark-800 rounded-full overflow-hidden">
+                  <div className="h-1.5 sm:h-2 bg-dark-800 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${genre.value}%` }}
@@ -300,11 +300,11 @@ const AdminAnalytics = () => {
             </div>
 
             {/* Legend */}
-            <div className="mt-6 pt-4 border-t border-white/5">
-              <div className="flex flex-wrap gap-3">
+            <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/5">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {genreData.map((genre) => (
-                  <span key={genre.name} className="flex items-center gap-1.5 text-xs text-gray-400">
-                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: genre.color }} />
+                  <span key={genre.name} className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-gray-400">
+                    <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full" style={{ backgroundColor: genre.color }} />
                     {genre.name}
                   </span>
                 ))}
@@ -314,17 +314,62 @@ const AdminAnalytics = () => {
         </motion.div>
 
         {/* Top Performing Movies */}
-        <motion.div variants={itemVariants} className="col-span-12">
-          <div className="bento-card p-6">
-            <div className="flex items-center justify-between mb-6">
+        <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-4">
+          <div className="bento-card p-4 sm:p-6">
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
               <div>
-                <h3 className="text-lg font-semibold text-white">Top Performing Movies</h3>
-                <p className="text-sm text-gray-400">Best sellers this {timeRange}</p>
+                <h3 className="text-base sm:text-lg font-semibold text-white">Top Performing Movies</h3>
+                <p className="text-xs sm:text-sm text-gray-400">Best sellers this {timeRange}</p>
               </div>
-              <Film className="w-5 h-5 text-gray-400" />
+              <Film className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
             </div>
 
-            <div className="overflow-x-auto">
+            {/* Mobile Card View */}
+            <div className="block sm:hidden space-y-3">
+              {topPerformers.map((movie, i) => (
+                <div key={movie.title} className="p-3 rounded-xl bg-dark-800/50 border border-white/5">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold ${
+                        i === 0 ? 'bg-amber-500/20 text-amber-400' :
+                        i === 1 ? 'bg-gray-500/20 text-gray-400' :
+                        i === 2 ? 'bg-orange-500/20 text-orange-400' :
+                        'bg-dark-800 text-gray-500'
+                      }`}>
+                        {i + 1}
+                      </span>
+                      <span className="text-white font-medium text-sm">{movie.title}</span>
+                    </div>
+                    <TrendingUp className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 text-xs">
+                    <div>
+                      <span className="text-gray-500">Revenue</span>
+                      <p className="text-white font-semibold">${movie.revenue.toLocaleString()}</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">Tickets</span>
+                      <p className="text-gray-300">{movie.tickets}</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">Occupancy</span>
+                      <div className="flex items-center gap-1">
+                        <div className="flex-1 h-1.5 bg-dark-800 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-to-r from-primary to-accent-cyan rounded-full"
+                            style={{ width: `${movie.occupancy}%` }}
+                          />
+                        </div>
+                        <span className="text-gray-400">{movie.occupancy}%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden sm:block overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-white/5">

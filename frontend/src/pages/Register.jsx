@@ -75,82 +75,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 relative overflow-hidden">
-      {/* Enhanced Background Effects with Animated Orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Main gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900" />
-        
-        {/* Animated orbs for depth */}
-        <motion.div 
-          className="absolute w-[500px] h-[500px] rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-            top: '-10%',
-            right: '-10%',
-          }}
-          animate={{
-            x: [0, -30, 0],
-            y: [0, 20, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div 
-          className="absolute w-[600px] h-[600px] rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(0, 102, 255, 0.2) 0%, transparent 70%)',
-            filter: 'blur(80px)',
-            bottom: '-20%',
-            left: '-15%',
-          }}
-          animate={{
-            x: [0, 40, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div 
-          className="absolute w-[350px] h-[350px] rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%)',
-            filter: 'blur(50px)',
-            top: '40%',
-            left: '60%',
-            transform: 'translate(-50%, -50%)',
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 0.8, 0.5],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        
-        {/* Subtle grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-          }}
-        />
-      </div>
-
+    <div className="min-h-screen flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6">
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -158,56 +83,57 @@ const Register = () => {
           duration: 0.6, 
           ease: [0.16, 1, 0.3, 1],
         }}
-        className="relative w-full max-w-md z-10"
+        className="w-full max-w-md"
       >
-        {/* Glass Modal Container with enhanced glow */}
+        {/* Glass Modal Container with subtle glow */}
         <motion.div 
-          className="glass-modal p-8 relative"
-          initial={{ boxShadow: '0 0 0 rgba(124, 58, 237, 0)' }}
-          animate={{ 
-            boxShadow: [
-              '0 0 40px rgba(124, 58, 237, 0.1)',
-              '0 0 60px rgba(124, 58, 237, 0.15)',
-              '0 0 40px rgba(124, 58, 237, 0.1)',
-            ],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="glass-modal p-5 sm:p-8"
+          initial={{ boxShadow: '0 0 30px rgba(124, 58, 237, 0.1)' }}
+          whileHover={{ boxShadow: '0 0 50px rgba(124, 58, 237, 0.15)' }}
+          transition={{ duration: 0.3 }}
         >
           {/* Logo */}
-          <div className="text-center mb-8">
-            <Link to="/" className="inline-flex items-center gap-2 mb-6 group">
+          <div className="text-center mb-5 sm:mb-8">
+            <Link to="/" className="inline-flex items-center gap-2 mb-4 sm:mb-6 group">
               <motion.div 
-                className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent-cyan flex items-center justify-center relative"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary to-accent-cyan flex items-center justify-center relative overflow-hidden"
                 whileHover={{ scale: 1.05, rotate: -5 }}
+                whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                {/* Logo glow */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-accent-cyan blur-lg opacity-50 group-hover:opacity-80 transition-opacity" />
-                <Film className="w-7 h-7 text-white relative z-10" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent-cyan opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+                <Film className="w-5 h-5 sm:w-7 sm:h-7 text-white relative z-10" />
               </motion.div>
-              <span className="text-2xl font-bold gradient-text">CinemaHub</span>
+              <motion.span 
+                className="text-xl sm:text-2xl font-bold gradient-text"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                CinemaHub
+              </motion.span>
             </Link>
             <motion.h1 
-              className="text-2xl font-bold text-white"
+              className="text-xl sm:text-2xl font-bold text-white"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.3 }}
             >
               Create Account
             </motion.h1>
             <motion.p 
-              className="text-gray-400 mt-2"
+              className="text-gray-400 mt-1 sm:mt-2 text-sm sm:text-base"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.4 }}
             >
               Join us for the best cinema experience
             </motion.p>
           </div>
 
-          {/* Form with Neumorphic Inputs */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <Input
                 label="First Name"
                 name="first_name"
@@ -319,12 +245,17 @@ const Register = () => {
           </form>
 
           {/* Sign In Link */}
-          <p className="text-center text-gray-400 mt-8">
+          <motion.p 
+            className="text-center text-gray-400 mt-6 sm:mt-8 text-sm sm:text-base"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
             Already have an account?{' '}
             <Link to="/login" className="text-accent-cyan font-medium hover:underline">
               Sign in
             </Link>
-          </p>
+          </motion.p>
         </motion.div>
       </motion.div>
     </div>

@@ -38,14 +38,28 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #050d1a;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #050d1a 0%, #0f1f33 50%, #1a2f47 100%);
+  background-color: #050d1a;
   min-height: 100vh;
+  min-height: 100dvh;
   color: #e8eaed;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
+  position: relative;
+}
+
+/* Root element */
+#root {
+  background: linear-gradient(135deg, #050d1a 0%, #0f1f33 50%, #1a2f47 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
 }
 
 /* === ENHANCED BACKGROUND DEPTH === */
