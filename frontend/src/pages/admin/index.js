@@ -1,0 +1,10 @@
+export { default as AdminDashboard } from './Dashboard';
+export { default as AdminMovies } from './Movies';
+export { default as AdminMovieForm } from './MovieForm';
+export { default as AdminShows } from './Shows';
+export { default as AdminShowForm } from './ShowForm';
+export { default as AdminUsers } from './Users';
+export { default as AdminBookings } from './Bookings';
+export { default as AdminPayments } from './Payments';
+export { default as AdminAnalytics } from './Analytics';
+export { default as AdminSettings } from './Settings';
